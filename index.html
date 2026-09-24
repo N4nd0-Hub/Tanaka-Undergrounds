@@ -279,6 +279,8 @@
 /* TERMINAL // TANAKA NETTRACE */
 .terminal-top{background:#0a130f!important;border-color:#2e7b55!important;color:#99ffbe!important;box-shadow:2px 2px 0 #000,inset 0 0 14px #00ff8422!important}.terminal-top:hover{background:#10261b!important;color:#d6ffe6!important}.terminal-shade{z-index:86!important;background:#020704d9!important;backdrop-filter:blur(4px)}.terminal-shade .dialog{width:min(960px,96vw);max-height:94vh;overflow:auto;background:#071009;border:2px solid #49e889;box-shadow:0 0 0 3px #011d0d,12px 12px 0 #000;color:#adffca}.terminal-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:13px 15px;border-bottom:2px solid #2de47b;background:linear-gradient(90deg,#07170d,#102619 70%,#07170d);font-family:Consolas,monospace}.terminal-head h2{margin:0;color:#7effa8;font:900 clamp(20px,4vw,34px)/1 Consolas,monospace;text-shadow:0 0 10px #38ff84aa}.terminal-head small{display:block;margin-top:5px;color:#55bb79;font:700 9px Consolas,monospace;letter-spacing:1px}.terminal-live{padding:5px 8px;border:1px solid #4cf28f;background:#06130b;color:#8affb3;font:900 9px Consolas,monospace;animation:terminalBlink 1.4s steps(2,end) infinite}@keyframes terminalBlink{50%{opacity:.45}}.terminal-body{padding:14px;background:linear-gradient(#071009ee,#020805ee),repeating-linear-gradient(0deg,#48ff7c08 0 1px,transparent 1px 4px)}.terminal-banner{border:1px dashed #2b9c5a;padding:10px 12px;margin-bottom:12px;color:#69d993;font:800 10px/1.55 Consolas,monospace;background:#031009}.terminal-banner b{color:#b6ffcf}.terminal-diff-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:12px}.terminal-diff{border:1px solid #24764a;background:#06130b;color:#80eaa5;padding:10px 9px;text-align:left;font-family:Consolas,monospace;min-height:92px;position:relative}.terminal-diff:hover{border-color:#6dffa0;background:#0a1e12}.terminal-diff.active{border:2px solid #7fffaa;background:#0d2416;box-shadow:inset 0 0 18px #37ff7c19}.terminal-diff.done{border-color:#d6ff6f;color:#e8ff9d}.terminal-diff.done::after{content:'✓';position:absolute;right:8px;top:6px;color:#dbff63;font-size:18px}.terminal-diff b{display:block;color:#c1ffd3;font-size:12px;margin-bottom:5px}.terminal-diff small{font-size:8px;line-height:1.4;color:#61b780}.terminal-diff .reward{display:block;margin-top:6px;color:#e2ff7a;font:900 8px Consolas,monospace}.terminal-workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(260px,.92fr);gap:10px}.terminal-pane{border:1px solid #236b45;background:#041009;padding:12px}.terminal-pane h3{margin:0 0 8px;color:#9dffbd;font:900 13px Consolas,monospace}.terminal-problem{white-space:pre-wrap;color:#b8eec9;font:10px/1.6 Consolas,monospace;min-height:104px}.terminal-example{margin-top:8px;padding:8px;border-left:3px solid #39d77e;background:#071a10;color:#79cf98;font:9px/1.5 Consolas,monospace;white-space:pre-wrap}.terminal-editor{width:100%;min-height:215px;resize:vertical;box-sizing:border-box;border:1px solid #3ac573;background:#010603;color:#baffcf;padding:10px;font:11px/1.55 Consolas,monospace;tab-size:2;outline:none;box-shadow:inset 0 0 20px #00ff6220}.terminal-editor:focus{border-color:#88ffb2;box-shadow:0 0 0 2px #1f7d4855,inset 0 0 20px #00ff6220}.terminal-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.terminal-action{border:1px solid #4bdb83;background:#0d2918;color:#aaffc6;padding:9px 11px;font:900 9px Consolas,monospace}.terminal-action:hover{background:#174d2b}.terminal-action.primary{background:#7aff9e;color:#04220e;border-color:#afffc5}.terminal-action:disabled{opacity:.42;cursor:not-allowed}.terminal-output{min-height:215px;max-height:310px;overflow:auto;background:#010402;border:1px solid #1c683d;padding:10px;color:#70d995;font:9px/1.55 Consolas,monospace;white-space:pre-wrap}.terminal-output .ok{color:#cfff76}.terminal-output .err{color:#ff799b}.terminal-orders{margin-top:12px;border:1px solid #6d7c31;background:#0e1407;padding:10px}.terminal-orders h3{margin:0 0 8px;color:#eaff77;font:900 12px Consolas,monospace}.terminal-order{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px;border-top:1px dashed #55652b;font:9px/1.4 Consolas,monospace}.terminal-order:first-of-type{border-top:0}.terminal-order b{color:#f1ffa5}.terminal-order.locked{opacity:.42;filter:grayscale(.5)}.terminal-progress{margin-top:10px;color:#6fc48e;font:8px Consolas,monospace;text-align:right}@media(max-width:760px){.terminal-diff-grid{grid-template-columns:repeat(2,1fr)}.terminal-workspace{grid-template-columns:1fr}.terminal-editor,.terminal-output{min-height:180px}.terminal-shade .dialog{width:100%;max-height:97vh}.terminal-head{padding:10px}.terminal-body{padding:9px}}@media(prefers-reduced-motion:reduce){.terminal-live{animation:none}}
 
+/* Layout compacto: evita que as categorias estiquem a grade inteira no celular. */
+@media(max-width:700px){.layout{grid-template-columns:minmax(0,1fr)}.left-rail{min-width:0;max-width:100%}.cat-list{max-width:100%}.catalog{min-width:0;width:100%}.catalog-grid{min-width:0;width:100%}}
 </style>
 </head>
 <body>
@@ -495,7 +497,7 @@ function currentDate(){const [y,m,d]=state.shopDate.split('-');return `${d}.${m}
 function renderHeader(){$('#headerDate').textContent=currentDate();$('#campaignDateChip').textContent=state.shopDate.replaceAll('-','.');$('#headerCartCount').textContent=cartCount();$('#mobileCount').textContent=cartCount();$('#mobileTotal').textContent=money(cartTotal())}
 function renderCategories(){const html=Object.entries(CATEGORY).map(([c,[label,glyph]])=>{const n=state.items.filter(i=>i.visible&&(c==='all'||i.category===c)).length;return `<button type="button" class="cat-btn ${filter===c?'active':''}" data-cat="${c}" aria-pressed="${filter===c}">${icon(glyph)}<span>${label}</span><span class="cat-count">${n.toString().padStart(2,'0')}</span></button>`}).join('');$('#categoryNav').innerHTML=html}
 function renderCatalog(){let items=state.items.filter(i=>i.visible&&(filter==='all'||i.category===filter)&&(groupFilter==='all'||i.group===groupFilter)&&[i.name,i.subtitle,i.description,i.effect,ITEM_GROUPS[i.group]||''].join(' ').toLocaleLowerCase('pt-BR').includes(search.toLocaleLowerCase('pt-BR')));if(sort==='priceAsc')items.sort((a,b)=>a.price-b.price);if(sort==='priceDesc')items.sort((a,b)=>b.price-a.price);if(sort==='alpha')items.sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'));if(sort==='stock')items.sort((a,b)=>(b.stock===-1?999999:b.stock)-(a.stock===-1?999999:a.stock));$('#catalogHeading').textContent=(CATEGORY[filter]?.[0]||'CATÁLOGO')+(groupFilter!=='all'?' / '+ITEM_GROUPS[groupFilter]:' / ARQUIVO DE MERCADORIAS');$('#catalogCount').textContent=String(items.length).padStart(2,'0')+' ITENS';const rarity={common:'STOCK / 2000',rare:'RARE FIND',limited:'T.S. EXCLUSIVE'};const bg={consumivel:'#efd8c6',arma:'#d3e1e0',protecao:'#ebd4e3',acessorio:'#ece1b5',especial:'#d6c5dc'};$('#catalogGrid').innerHTML=items.length?items.map((i,n)=>`<article class="product ${i.stock===0?'is-out':''}"><div class="product-top" style="--product-bg:${bg[i.category]}"><span class="product-serial">#${esc(i.id.toUpperCase())}</span><span class="rarity ${i.rarity}">${rarity[i.rarity]}</span>${itemGraphic(i)}${i.id===LUCKY_BAG_ID?'<span class="mystery-sticker">★ 1 ITEM SURPRESA</span>':''}</div><div class="product-body"><div class="product-category">${CATEGORY[i.category][0]} // ${esc(i.subtitle)}</div><h3 class="product-name">${esc(i.name)}</h3><p class="product-desc">${esc(i.description)}</p><div class="effect">${icon('acessorio')}<span>${esc(i.effect||'Efeito a definir.')}</span></div><div class="product-foot"><div class="price"><small title="${i.sourcePR!==null?esc(`Tabela de referência: ${i.sourcePR} PR × ¥1.000`):'Valor da loja'}">PREÇO / CASH ONLY</small>${money(i.price)}</div><button class="buy" data-buy="${esc(i.id)}" ${i.stock===0?'disabled':''}>${icon('plus','sm')} ${i.stock===0?'ESGOTADO':'CESTA'}</button></div><div class="product-stock ${i.stock!==-1&&i.stock<=3?'low':''}">${i.stock===-1?'● ESTOQUE CONTÍNUO':i.stock===0?'× FORA DE ESTOQUE':i.stock<=3?`◈ ÚLTIMAS ${i.stock} UNIDADES`:`● ESTOQUE: ${i.stock.toString().padStart(2,'0')} UNIDADES`}</div></div></article>`).join(''):`<div class="empty">${icon('search')}<b>NADA NO ESTOQUE.</b><p>Tente outra busca ou peça para o Tanaka verificar no depósito.</p></div>`;}
-function receiptHTML(){const p=current();const lines=cartLines();const total=cartTotal();return `<div class="receipt-head"><div><b>CAIXA Nº 01 ↘</b><small>SEU PEDIDO / CHECKOUT</small></div>${icon('cart','lg')}</div><div class="receipt-paper"><div class="receipt-brand"><b>TANAKA <span>SR.</span></b><small>UNDERGROUND MARKET · 東京</small><br><small><span data-receipt-preview>${showReceiptDate(receiptDateDraft)}</span> // CASH ONLY</small></div><div class="client-box"><small>COMPRADOR / PLAYER SELECT</small><div class="client-row"><select aria-label="Cliente" data-client>${state.profiles.map(q=>`<option value="${esc(q.id)}" ${q.id===p.id?'selected':''}>${esc(q.name)}</option>`).join('')}</select><button class="tiny" type="button" data-client-edit title="Editar saldo ou personagem">${icon('edit','sm')}</button><button class="tiny" type="button" data-client-add title="Adicionar personagem">${icon('plus','sm')}</button></div></div><label class="receipt-date-box"><span>📅 DATA DA COMPRA / NO RPG</span><input type="date" data-receipt-date value="${esc(receiptDateDraft)}" aria-label="Data da compra na campanha" required><small>Você escolhe a data da notinha. Cada compra fica registrada com seu próprio dia.</small></label><div class="wallet"><span>SALDO DISPONÍVEL</span><b>${money(p.wallet)}</b></div><div class="cart-lines">${lines.length?lines.map(({item:i,qty})=>`<div class="cart-line"><div><b>${esc(i.name)}</b>${i.id===LUCKY_BAG_ID?'<small class="mystery-in-cart">★ ROLETA · 1 PRÊMIO POR MALETA</small>':''}<small>${money(i.price)} / UNID.</small><div class="qty"><button type="button" data-qty="${esc(i.id)}" data-step="-1" aria-label="Remover uma unidade de ${esc(i.name)}">−</button><b>${qty}</b><button type="button" data-qty="${esc(i.id)}" data-step="1" aria-label="Adicionar uma unidade de ${esc(i.name)}" ${i.stock!==-1&&qty>=i.stock?'disabled':''}>+</button></div></div><div class="cart-line-price">${money(i.price*qty)}</div></div>`).join(''):`<div class="cart-empty">NENHUM ITEM SELECIONADO.<br>──── ◈ ────<br>O CHEFE NÃO GOSTA DE CURIOSOS.</div>`}</div><div class="totals"><div class="total-row"><span>${cartCount()} UNIDADE(S)</span><span>${money(total)}</span></div><div class="total-row"><span>ENTREGA</span><span>RETIRAR NO BALCÃO</span></div><div class="total-row grand"><span>TOTAL</span><strong>${money(total)}</strong></div>${total>p.wallet?`<div class="total-row danger"><span>SALDO INSUFICIENTE</span><b>FALTAM ${money(total-p.wallet)}</b></div>`:''}</div><button type="button" class="checkout" data-checkout ${!lines.length||total>p.wallet?'disabled':''}>${icon('bag')} CONFIRMAR COMPRA ↗</button><div class="receipt-hint">A compra desconta ¥ do saldo, atualiza o estoque e gera um recibo local.</div><div class="receipt-actions"><button type="button" data-clear-cart>× LIMPAR CESTA</button><button type="button" data-history>≡ VER COMPRAS</button></div><div class="receipt-no">*** THANK YOU, COME AGAIN ***</div></div>`}
+function receiptHTML(){const p=current();const lines=cartLines();const total=cartTotal();return `<div class="receipt-head"><div><b>CAIXA Nº 01 ↘</b><small>SEU PEDIDO / CHECKOUT</small></div>${icon('cart','lg')}</div><div class="receipt-paper"><div class="receipt-brand"><b>TANAKA <span>SR.</span></b><small>UNDERGROUND MARKET · 東京</small><br><small><span data-receipt-preview>${showReceiptDate(receiptDateDraft)}</span> // CASH ONLY</small></div><div class="client-box"><small>COMPRADOR / PLAYER SELECT</small><div class="client-row"><select aria-label="Cliente" data-client>${state.profiles.map(q=>`<option value="${esc(q.id)}" ${q.id===p.id?'selected':''}>${esc(q.name)}</option>`).join('')}</select><button class="tiny" type="button" data-client-edit title="Editar saldo ou personagem">${icon('edit','sm')}</button><button class="tiny" type="button" data-client-add title="Adicionar personagem">${icon('plus','sm')}</button></div></div><label class="receipt-date-box"><span>📅 DATA DA COMPRA / NO RPG</span><input type="date" data-receipt-date value="${esc(receiptDateDraft)}" aria-label="Data da compra na campanha" required><small>Você escolhe a data da notinha. Cada compra fica registrada com seu próprio dia.</small></label><div class="wallet"><span>SALDO DISPONÍVEL</span><b>${money(p.wallet)}</b></div><div class="cart-lines">${lines.length?lines.map(({item:i,qty})=>`<div class="cart-line"><div><b>${esc(i.name)}</b>${i.id===LUCKY_BAG_ID?'<small class="mystery-in-cart">★ ROLETA · 1 PRÊMIO POR MALETA</small>':''}<small>${money(i.price)} / UNID.</small><div class="qty"><button type="button" data-qty="${esc(i.id)}" data-step="-1" aria-label="Remover uma unidade de ${esc(i.name)}">−</button><b>${qty}</b><button type="button" data-qty="${esc(i.id)}" data-step="1" aria-label="Adicionar uma unidade de ${esc(i.name)}" ${i.stock!==-1&&qty>=i.stock?'disabled':''}>+</button></div></div><div class="cart-line-price">${money(i.price*qty)}</div></div>`).join(''):`<div class="cart-empty">NENHUM ITEM SELECIONADO.<br>──── ◈ ────<br>O CHEFE NÃO GOSTA DE CURIOSOS.</div>`}</div><div class="totals"><div class="total-row"><span>${cartCount()} UNIDADE(S)</span><span>${money(total)}</span></div><div class="total-row"><span>ENTREGA</span><span>RETIRAR NO BALCÃO</span></div><div class="total-row grand"><span>TOTAL</span><strong>${money(total)}</strong></div>${total>p.wallet?`<div class="total-row danger"><span>SALDO INSUFICIENTE</span><b>FALTAM ${money(total-p.wallet)}</b></div>`:''}</div><button type="button" class="checkout" data-checkout ${!lines.length||total>p.wallet?'disabled':''}>${icon('bag')} CONFIRMAR COMPRA ↗</button><div class="receipt-hint">A compra desconta ¥ do saldo local, atualiza o estoque central e envia o pedido ao Presidente Tanaka.</div><div class="receipt-actions"><button type="button" data-clear-cart>× LIMPAR CESTA</button><button type="button" data-history>≡ VER COMPRAS</button></div><div class="receipt-no">*** THANK YOU, COME AGAIN ***</div></div>`}
 function renderReceipt(){const h=receiptHTML();$('#desktopReceipt').innerHTML=h;const mob=$('#mobileReceipt');if(mob)mob.innerHTML=h}
 function render(){renderHeader();renderCategories();renderCatalog();renderReceipt()}
 function addCart(id){const i=state.items.find(x=>x.id===id);if(!i||!i.visible||i.stock===0)return toast('Item indisponível no momento.',true);let q=Number(cart()[id]||0);if(i.stock!==-1&&q>=i.stock)return toast('Você já colocou todo o estoque disponível na cesta.',true);cart()[id]=q+1;save();renderHeader();renderReceipt();toast('Adicionado: '+i.name)}
@@ -609,41 +611,92 @@ function showMysteryRoulette(s,pool){
   spin();
 }
 
+function tanakaTxnId(){
+ if(globalThis.crypto?.randomUUID)return crypto.randomUUID();
+ const b=new Uint8Array(16);crypto.getRandomValues(b);b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;
+ const h=[...b].map(x=>x.toString(16).padStart(2,'0')).join('');
+ return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;
+}
+function tanakaCartSignature(profile,date,lines,total){
+ return JSON.stringify({buyer:profile.id,buyerName:profile.name,date,total,lines:lines.map(({item:i,qty})=>[i.id,qty]).sort((a,b)=>a[0].localeCompare(b[0]))});
+}
+function tanakaHasPendingCheckout(signature){
+ try{const p=JSON.parse(localStorage.getItem('tanaka_online_pending_checkout_v2')||'null');
+   return p?.signature===signature&&/^[0-9a-f-]{36}$/i.test(p.txnId);
+ }catch{return false;}
+}
 function checkout(){
  const p=current(),lines=cartLines(),total=cartTotal();
+ const pendingRetry=tanakaHasPendingCheckout(tanakaCartSignature(p,receiptDateDraft,lines,total));
  if(!lines.length)return toast('A cesta está vazia.',true);
  if(!validReceiptDate(receiptDateDraft))return toast('Selecione uma data válida para a notinha.',true);
  if(total>p.wallet)return toast('Saldo insuficiente em ienes.',true);
- if(lines.some(({item:i,qty})=>i.stock!==-1&&i.stock<qty))return toast('O estoque mudou. Reveja a cesta.',true);
+ if(!pendingRetry&&lines.some(({item:i,qty})=>i.stock!==-1&&i.stock<qty))return toast('O estoque mudou. Reveja a cesta.',true);
  const bagQty=lines.find(l=>l.item.id===LUCKY_BAG_ID)?.qty||0;
- if(bagQty>0&&mysteryCapacity(eligibleLuckyItems(lines),lines)<bagQty)return toast('Não há brindes suficientes no depósito para essas maletas.',true);
- const m=openModal(modalFrame('FECHAR A CONTA?','CONFIRMAÇÃO / PAGAMENTO EM ¥',`<div class="confirmation-box"><h3>${money(total)}</h3><p><b>Comprador:</b> ${esc(p.name)}<br><b>Itens:</b> ${cartCount()} unidade(s)<br><b>Saldo após a compra:</b> ${money(p.wallet-total)}</p><label class="checkout-confirm-date"><span>📅 DATA DA COMPRA / NA CAMPANHA</span><input type="date" id="confirmReceiptDate" value="${esc(receiptDateDraft)}" required aria-label="Data da compra na campanha"><small>Essa é a data que ficará salva neste recibo, independentemente da data real.</small></label><p>O saldo será descontado e as unidades compradas sairão do estoque desta loja.</p>${bagQty?`<p class="lucky-checkout-notice">★ ${bagQty} MALETA(S): ${bagQty} prêmio(s) sorteado(s) entre os itens disponíveis, sem custo adicional. A roleta começa após confirmar.</p>`:''}</div><div class="dialog-actions"><button class="action light" type="button" data-close>VOLTAR</button><button class="action hot" type="button" id="confirmPurchase">CONFIRMAR PAGAMENTO →</button></div>`));
+ if(!pendingRetry&&bagQty>0&&mysteryCapacity(eligibleLuckyItems(lines),lines)<bagQty)return toast('Não há brindes suficientes no depósito para essas maletas.',true);
+ const m=openModal(modalFrame('FECHAR A CONTA?','CONFIRMAÇÃO / CAIXA CENTRAL TANAKA',`<div class="confirmation-box"><h3>${money(total)}</h3><p><b>Comprador:</b> ${esc(p.name)}<br><b>Itens:</b> ${cartCount()} unidade(s)<br><b>Saldo após a compra:</b> ${money(p.wallet-total)}</p><label class="checkout-confirm-date"><span>📅 DATA DA COMPRA / NA CAMPANHA</span><input type="date" id="confirmReceiptDate" value="${esc(receiptDateDraft)}" required aria-label="Data da compra na campanha"><small>Essa é a data que ficará salva neste recibo, independentemente da data real.</small></label><p><b>◈ CAIXA ONLINE:</b> o Presidente Tanaka receberá este pedido e o estoque central será atualizado para todos os jogadores.</p>${bagQty?`<p class="lucky-checkout-notice">★ ${bagQty} MALETA(S): o prêmio será escolhido pelo depósito central e a roleta revelará o resultado após o pagamento.</p>`:''}</div><div class="dialog-actions"><button class="action light" type="button" data-close>VOLTAR</button><button class="action hot" type="button" id="confirmPurchase">CONFIRMAR PAGAMENTO →</button></div>`));
  let purchaseCommitted=false;
+ const pendingKey='tanaka_online_pending_checkout_v2';
  const confirmButton=m.querySelector('#confirmPurchase');
  const confirmDate=m.querySelector('#confirmReceiptDate');
- confirmButton.onclick=()=>{
+ confirmButton.onclick=async()=>{
    if(purchaseCommitted)return;
    const selectedDate=confirmDate.value;
    if(!validReceiptDate(selectedDate)){confirmDate.reportValidity();return toast('Escolha uma data válida para a compra.',true);}
-   // Repeat stock preflight in case another modal changed the local catalog.
-   if(total>p.wallet||lines.some(({item:i,qty})=>i.stock!==-1&&i.stock<qty))return toast('Saldo ou estoque alterado. Revise a compra.',true);
-   if(bagQty>0&&mysteryCapacity(eligibleLuckyItems(lines),lines)<bagQty)return toast('Brindes esgotados. Revise a compra.',true);
-   purchaseCommitted=true;confirmButton.disabled=true;
-   const oldWallet=p.wallet,oldStock=state.items.map(i=>i.stock),oldNo=state.saleNo,oldSales=state.sales.slice(),oldCart={...state.carts[p.id]};
-   p.wallet-=total;
-   for(const {item:i,qty} of lines)if(i.stock!==-1)i.stock-=qty;
-   let prizes=[],pool=[];
-   if(bagQty>0)({prizes,pool}=pickMysteryPrizes(bagQty));
-   const sale={no:++state.saleNo,buyerId:p.id,buyer:p.name,lines:lines.map(({item:i,qty})=>({id:i.id,name:i.name,qty,price:i.price})),prizes,total,balanceAfter:p.wallet,shopDate:selectedDate,timestamp:new Date().toISOString()};
-   state.sales.push(sale);state.sales=state.sales.slice(-300);state.carts[p.id]={};
-   if(!save()){
-     p.wallet=oldWallet;state.items.forEach((i,j)=>i.stock=oldStock[j]);state.saleNo=oldNo;state.sales=oldSales;state.carts[p.id]=oldCart;
-     purchaseCommitted=false;confirmButton.disabled=false;
-     return;
+   const signature=tanakaCartSignature(p,selectedDate,lines,total);
+   const retry=tanakaHasPendingCheckout(signature);
+   if(total>p.wallet||(!retry&&lines.some(({item:i,qty})=>i.stock!==-1&&i.stock<qty)))return toast('Saldo ou estoque alterado. Revise a compra.',true);
+   if(!retry&&bagQty>0&&mysteryCapacity(eligibleLuckyItems(lines),lines)<bagQty)return toast('Brindes esgotados. Revise a compra.',true);
+   if(!window.TANAKA_ONLINE?.connected?.())return toast('O caixa central está offline. Aguarde a conexão para não perder o pedido.',true);
+   let clientTxnId=tanakaTxnId();
+   try{
+     const pending=JSON.parse(localStorage.getItem(pendingKey)||'null');
+     if(pending?.signature===signature&&/^[0-9a-f-]{36}$/i.test(pending.txnId))clientTxnId=pending.txnId;
+     localStorage.setItem(pendingKey,JSON.stringify({signature,txnId:clientTxnId,since:new Date().toISOString()}));
+   }catch(e){console.warn('[TANAKA] Não foi possível memorizar o pedido pendente:',e)}
+   purchaseCommitted=true;confirmButton.disabled=true;confirmButton.textContent='REGISTRANDO NO CAIXA...';
+   let remote;
+   try{
+     remote=await window.TANAKA_ONLINE.purchase({
+       txnId:clientTxnId,buyer:p.name,shopDate:selectedDate,
+       lines:lines.map(({item:i,qty})=>({id:i.id,qty})),
+       expectedTotal:total,balanceAfter:p.wallet-total
+     });
+   }catch(err){
+     purchaseCommitted=false;confirmButton.disabled=false;confirmButton.textContent='CONFIRMAR PAGAMENTO →';
+     // Rejeição definitiva: permita criar outra transação. Em queda de rede, preserve o ID para recuperação sem duplicar a compra.
+     if(/Estoque insuficiente|O preço foi alterado|Mercadoria indisponível|Item indisponível/i.test(String(err?.message||err))){
+       try{localStorage.removeItem(pendingKey)}catch(e){}
+     }
+     window.TANAKA_ONLINE?.sync?.();
+     return toast('CAIXA CENTRAL: '+String(err?.message||err),true);
    }
+   // O banco já consumiu o estoque. Se este pedido já existe no save, não debite novamente.
+   const recorded=state.sales.find(s=>s.clientTxnId===clientTxnId);
+   if(recorded){
+     try{localStorage.removeItem(pendingKey)}catch(e){}
+     m.remove();window.TANAKA_ONLINE?.sync?.();
+     return showReceipt(recorded);
+   }
+   p.wallet-=Number(remote.total??total);
+   if(Array.isArray(remote.items)){
+     const ids=new Set();
+     state.items=remote.items.map(x=>{const it=cleanItem(x);ids.add(it.id);if(!it.image)it.image=DEFAULT_ITEM_IMAGES[it.id]||EXTRA_ITEM_IMAGES[it.id]||'';return it});
+     for(const carts of Object.values(state.carts))for(const id of Object.keys(carts))if(!ids.has(id))delete carts[id];
+   }
+   const prizes=Array.isArray(remote.prizes)?remote.prizes:[];
+   const remoteNo=Number(remote.sale_no)||0;
+   // Recebimentos locais antigos podem ter a mesma numeração que o caixa central.
+   const saleNo=remoteNo&&!state.sales.some(s=>s.no===remoteNo)?remoteNo:Math.max(0,state.saleNo,...state.sales.map(s=>Number(s.no)||0))+1;
+   state.saleNo=Math.max(Number(state.saleNo)||0,saleNo);
+   const sale={no:saleNo,remoteNo:remoteNo||null,buyerId:p.id,buyer:p.name,lines:Array.isArray(remote.lines)?remote.lines:lines.map(({item:i,qty})=>({id:i.id,name:i.name,qty,price:i.price})),prizes,total:Number(remote.total??total),balanceAfter:p.wallet,shopDate:selectedDate,timestamp:new Date().toISOString(),serverId:remote.sale_id||'',clientTxnId};
+   state.sales.push(sale);state.sales=state.sales.slice(-300);state.carts[p.id]={};
+   const localSaved=save();
+   if(localSaved)try{localStorage.removeItem(pendingKey)}catch(e){}
    receiptDateDraft=selectedDate;
    m.remove();$('#modals .cart-shade')?.remove();render();
-   if(prizes.length)showMysteryRoulette(sale,pool);else showReceipt(sale);
+   if(!localSaved)toast('Compra registrada no Tanaka, mas o save local não pôde ser gravado. Exporte um backup.',true);
+   if(prizes.length)showMysteryRoulette(sale,remote.prize_pool||state.items.filter(i=>i.id!==LUCKY_BAG_ID));else showReceipt(sale);
  };
 }
 function showHistory(){const p=current(),sales=state.sales.filter(s=>s.buyerId===p.id).slice().reverse();const body=`<div class="subtle">RECIBOS DE ${esc(p.name.toUpperCase())} · ${sales.length} REGISTROS MANTIDOS NESTE NAVEGADOR</div>${sales.length?sales.map((s,ix)=>`<div class="history-row"><div><b>#${String(s.no).padStart(4,'0')} · ${esc(s.shopDate)}</b><small>${esc(s.lines.map(l=>`${l.qty}× ${l.name}`).join(' / ').slice(0,130))}${s.prizes?.length?`<br><em style="color:#b72a70;font-weight:900">★ BRINDES: ${esc(s.prizes.map(p=>p.name).join(', ').slice(0,130))}</em>`:''}</small></div><div><strong>${money(s.total)}</strong><br><button class="tiny" type="button" data-view-sale="${s.no}">RECIBO ↗</button></div></div>`).join(''):'<div class="empty" style="min-height:150px;color:#171417;background:#fff8e8">AINDA NÃO HÁ COMPRAS.</div>'}<div class="dialog-actions"><button class="action light" data-close>FECHAR</button></div>`;const m=openModal(modalFrame('ARQUIVO DE VENDAS.','RECIBOS / COMPRAS ANTERIORES',body));m.addEventListener('click',e=>{const b=e.target.closest('[data-view-sale]');if(!b)return;const s=state.sales.find(s=>s.no===Number(b.dataset.viewSale));if(s)showReceipt(s)})}
@@ -798,6 +851,28 @@ $('#terminalTop').onclick=openTerminal;$('#historyTop').onclick=showHistory;$('#
      for(const id of Object.keys(carts))if(!ids.has(id))delete carts[id];
    save(); render();
  }
+ async function purchase(order){
+   if(!client||!live)throw Error('Conexão com o caixa central indisponível.');
+   const {data,error}=await client.rpc('tanaka_checkout',{
+     p_client_txn_id:order.txnId,
+     p_buyer_name:order.buyer,
+     p_shop_date:order.shopDate,
+     p_lines:order.lines,
+     p_expected_total:order.expectedTotal,
+     p_balance_after:order.balanceAfter
+   });
+   if(error){
+     const m=String(error.message||'Falha de comunicação.');
+     if(/stock|estoque/i.test(m))throw Error('Estoque insuficiente. Atualize a cesta.');
+     if(/preço|price/i.test(m))throw Error('O preço foi alterado pelo Tanaka. Atualize a cesta.');
+     if(/disponível|indisponível|not found|item não encontrado/i.test(m))throw Error('Mercadoria indisponível. Atualize a vitrine.');
+     throw Error(m);
+   }
+   if(!data?.ok)throw Error('O caixa central recusou o pedido.');
+   if(Number.isFinite(Number(data.catalog_revision)))revision=Number(data.catalog_revision);
+   live=true;badge(true,'● CAIXA CENTRAL / SINCRONIZADO');
+   return data;
+ }
  async function sync(){
    if(loading)return;
    loading=true;
@@ -814,7 +889,7 @@ $('#terminalTop').onclick=openTerminal;$('#historyTop').onclick=showHistory;$('#
      }
      if(!row)throw Error('Execute o SQL inicial antes de publicar');
      if(!live||row.revision!==revision){applyCatalog(row.items);revision=row.revision;}
-     live=true;badge(true,'● CATÁLOGO ONLINE / SINCRONIZADO');
+     live=true;badge(!!client,client?'● CAIXA CENTRAL / SINCRONIZADO':'◈ CATÁLOGO ONLINE / CAIXA INDISPONÍVEL');
    }catch(e){badge(false,'◈ CATÁLOGO LOCAL / CONEXÃO PENDENTE');
      console.warn('[TANAKA ONLINE] O catálogo local foi mantido:',e);}
    finally{loading=false;}
@@ -828,7 +903,7 @@ $('#terminalTop').onclick=openTerminal;$('#historyTop').onclick=showHistory;$('#
  catch(e){console.warn('[TANAKA ONLINE] Polling ativado:',e);client=null;}
  sync();setInterval(sync,30000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync()});
- window.TANAKA_ONLINE={sync,connected:()=>live};
+ window.TANAKA_ONLINE={sync,purchase,connected:()=>live&&!!client};
 })();
 </script>
 
