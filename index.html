@@ -3909,7 +3909,183 @@ a {
   }
 }
     </style>
-  </head>
+  <!-- TANAKA MOBILE PATCH 2026-10-05 -->
+<style id="tanaka-mobile-layout-2026-10-05">
+/* Responsividade mobile: mantém a estética da loja sem comprimir controles e cards. */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,video,canvas{max-width:100%}
+.shell,.layout,.catalog,.hero,.shopbar,.receipt-panel{min-width:0}
+
+@media(max-width:820px){
+  .header{
+    grid-template-columns:minmax(0,1fr) auto;
+    min-height:64px;
+    gap:8px;
+    padding:8px 10px;
+  }
+  .header-marquee{display:none}
+  .brand{gap:8px;min-width:0}
+  .brand-symbol{flex-basis:40px;height:40px}
+  .brand-name{font-size:21px;overflow:hidden;text-overflow:ellipsis}
+  .brand-sub{font-size:7px;letter-spacing:.8px}
+  .header-actions{gap:4px;min-width:0}
+  .top-btn{min-width:0;padding:8px 9px;font-size:9px;box-shadow:1px 1px 0 #000}
+  .top-btn .glyph{width:16px;height:16px}
+  .shell{width:100%;max-width:100%;padding:10px 10px calc(92px + env(safe-area-inset-bottom))}
+  .ticker{height:auto;min-height:29px;padding:6px 9px}
+  .topline{margin:10px 0;min-width:0}
+  .topline .right{display:none}
+  .hero{
+    grid-template-columns:1fr;
+    min-height:0;
+    box-shadow:5px 5px 0 #09080b;
+  }
+  .hero-copy{padding:20px 17px 17px}
+  .hero h1{font-size:clamp(46px,13.5vw,67px);line-height:.8;margin:16px 0 15px;letter-spacing:-1px}
+  .hero-copy p{font-size:11px}
+  .hero-visual{min-height:205px;border-left:0;border-top:4px solid var(--ink)}
+  .hero-visual .tanaka-portrait{width:min(220px,68%);height:225px;margin-bottom:-10px}
+  .hero-sticker{width:68px;height:68px;font-size:11px;top:11px;right:10px}
+  .hero-tape{left:10px;bottom:9px;font-size:8px}
+  .shopbar{grid-template-columns:1fr;gap:9px;margin:19px 0 11px}
+  .section-heading{font-size:31px}
+  .shopbar-right{
+    width:100%;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:6px;
+    justify-content:stretch;
+  }
+  .search{grid-column:1/-1;width:100%;min-width:0}
+  .sort,.effect-filter{width:100%;max-width:none;min-width:0}
+  .layout{grid-template-columns:1fr;gap:10px}
+  .left-rail{position:static;display:block}
+  .left-rail .rail-panel{border:0;background:transparent;box-shadow:none;overflow:visible}
+  .rail-title,.rail-note{display:none}
+  .cat-list{
+    display:flex;
+    gap:6px;
+    padding:4px 0 8px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:thin;
+    scroll-snap-type:x proximity;
+  }
+  .cat-btn{
+    display:flex;
+    flex:0 0 auto;
+    min-height:38px;
+    padding:8px 10px;
+    gap:6px;
+    white-space:nowrap;
+    scroll-snap-align:start;
+    background:#2d2732;
+    border:1px solid #685c70;
+  }
+  .cat-btn .glyph,.cat-btn .item-icon,.cat-btn .item-svg{width:17px;height:17px}
+  .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .product{min-width:0;box-shadow:3px 3px 0 #09080c}
+  .product-top{height:137px}
+  .product-body{min-height:0;padding:10px 9px}
+  .product-name{font-size:17px;min-height:34px}
+  .product-desc{font-size:10px;min-height:36px}
+  .price{font-size:20px}
+  .buy{min-width:61px;padding:5px;font-size:8px}
+  .receipt-panel{display:none}
+  .mobile-cart{
+    display:flex;
+    min-height:64px;
+    padding:8px 11px calc(8px + env(safe-area-inset-bottom));
+  }
+  .mobile-cart button{padding:9px 14px}
+  .footer{margin-top:25px;padding:13px 0;gap:12px;flex-direction:column}
+  .footer-btns{width:100%}
+  .footer-btns button{flex:1 1 120px}
+  .shade{padding:6px;align-items:flex-end}
+  .dialog,.dialog.wide{width:100%;max-width:none;max-height:92dvh;box-shadow:4px 4px 0 #07060b}
+  .dialog-head{padding:11px 12px}
+  .dialog-head h2{font-size:22px}
+  .dialog-body{padding:12px}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .dialog-actions{gap:6px}
+  .dialog-actions .action{flex:1 1 135px;min-width:0}
+  .history-row{grid-template-columns:minmax(0,1fr);gap:7px}
+  .history-row strong{text-align:left}
+  .receipt-actions{grid-template-columns:1fr}
+  .tanaka-entry{padding:9px}
+  .tanaka-entry-panel{padding:20px 14px 18px;box-shadow:5px 5px 0 #000}
+  .tanaka-entry h2{font-size:clamp(38px,12vw,52px)}
+  .lucky-shade .dialog{width:100%;max-height:94dvh}
+  .lucky-body{padding:10px!important}
+  .lucky-window{height:155px}
+  .lucky-card{width:120px;min-width:120px;height:120px}
+  .lucky-result{gap:9px;padding:10px}
+  .lucky-prize-art{width:78px;height:78px;flex-basis:78px}
+  .terminal-shade .dialog{width:100%;max-height:95dvh}
+  .terminal-body{padding:9px}
+  .terminal-workspace{grid-template-columns:1fr}
+  .terminal-editor,.terminal-output{min-height:175px}
+}
+
+@media(max-width:520px){
+  .header{min-height:59px;padding:7px 8px}
+  .brand-symbol{flex-basis:36px;height:36px}
+  .brand-name{font-size:18px}
+  .brand-sub{display:none}
+  .header-actions .top-btn .optional{display:none}
+  .header-actions .top-btn{padding:7px 8px}
+  .ticker .ticker-mid{max-width:100%}
+  .hero-copy{padding:18px 14px 15px}
+  .hero h1{font-size:clamp(43px,15vw,58px)}
+  .hero-kicker{font-size:8px;letter-spacing:1px}
+  .hero-tags{gap:4px}
+  .hero-tags .pill{font-size:8px}
+  .hero-visual{min-height:183px}
+  .hero-visual .tanaka-portrait{width:min(198px,70%);height:198px}
+  .shopbar-right{grid-template-columns:1fr}
+  .search,.sort,.effect-filter{grid-column:auto;width:100%}
+  .catalog-grid{grid-template-columns:1fr;gap:11px}
+  .product{
+    display:flex!important;
+    grid-template-columns:none!important;
+    width:100%;
+  }
+  .product-top{
+    height:148px!important;
+    min-height:148px!important;
+    border-right:0!important;
+    border-bottom:3px solid #151119!important;
+  }
+  .product-body{min-height:0}
+  .product-name{min-height:0;font-size:19px}
+  .product-desc{min-height:0}
+  .product-graphic:not(.has-photo){width:96px;height:96px}
+  .product-graphic .item-icon,.product-graphic .item-svg{width:69px;height:69px}
+  .product-graphic.has-photo{width:105px;height:104px}
+  .product-foot{align-items:flex-end}
+  .price{font-size:22px}
+  .buy{min-width:76px;min-height:39px}
+  .mobile-cart{gap:7px}
+  .mobile-cart b{font-size:17px}
+  .mobile-cart button{padding:9px 11px;font-size:9px}
+  .terminal-diff-grid{grid-template-columns:1fr 1fr}
+  .terminal-diff{min-height:82px;padding:8px}
+  .lucky-controls{align-items:stretch}
+  .lucky-controls .action{width:100%}
+}
+
+@media(max-width:360px){
+  .brand-name{font-size:16px}
+  .brand-symbol{flex-basis:33px;height:33px}
+  .top-btn{padding:6px}
+  .hero h1{font-size:42px}
+  .section-heading{font-size:28px}
+  .terminal-diff-grid{grid-template-columns:1fr}
+}
+</style>
+<!-- /TANAKA MOBILE PATCH -->
+</head>
   <body>
     <!-- Sprites locais: o site abre mesmo sem conexão -->
     <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
