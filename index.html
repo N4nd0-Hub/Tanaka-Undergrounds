@@ -3584,6 +3584,38 @@ a {
   }
 }
 
+/*NETTRACE // guia passo a passo (v2)*/
+.terminal-gate-shade .dialog{width:min(1000px,96vw)!important}
+.netgate-grid{grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr)!important;align-items:start}
+.ng-lead{margin:0 0 10px;color:#cfe9d6;font:13px/1.55 Consolas,monospace}
+.ng-lead b{color:#d3ff8c}
+.ng-cipher{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.ng-cipher span{display:grid;grid-template-rows:auto auto;justify-items:center;min-width:52px;border:1px solid #46df86;background:#051409}
+.ng-cipher b{display:block;width:100%;text-align:center;padding:5px 8px;color:#d3ff8c;font:900 15px Consolas,monospace;border-bottom:1px dashed #2a7a4b}
+.ng-cipher i{display:block;padding:4px 0 5px;font:900 18px Consolas,monospace;font-style:normal;color:#2a7a4b}
+.ng-cipher i.on{color:#5dff9a;text-shadow:0 0 10px #46df86;animation:ngPop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes ngPop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+.ng-sub{margin:12px 0 6px;color:#46df86;font:900 11px Consolas,monospace;letter-spacing:1.5px}
+.ng-demo{display:grid;gap:2px;max-width:320px;font:13px Consolas,monospace}
+.ng-demo-row{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;background:#071e10;color:#cfe9d6}
+.ng-demo-row span{padding:4px 0}
+.ng-demo-row span:nth-child(2){color:#ffb36b}
+.ng-demo-row span:last-child{color:#5dff9a;font-weight:900}
+.ng-demo-head{background:none;color:#2f9c5d;font-size:10px;letter-spacing:1px}
+.ng-demo-foot{padding:4px 0;text-align:center;color:#cfe9d6}
+.ng-demo-foot b{color:#5dff9a}
+.ng-steps{margin:0 0 8px;padding-left:22px;color:#cfe9d6;font:13px/1.6 Consolas,monospace}
+.ng-steps b{color:#d3ff8c}
+.ng-steps code,.ng-glossary code,.ng-hint-list code{padding:0 4px;background:#0d2a17;color:#9dffc4;border:1px solid #1f5a37}
+.ng-glossary{margin:4px 0 10px;color:#cfe9d6;font:12.5px/1.55 Consolas,monospace}
+.ng-glossary summary{cursor:pointer;color:#46df86;font-weight:900}
+.ng-glossary p{margin:6px 0 0;padding:8px 10px;border-left:2px solid #46df86;background:#061a0d}
+.ng-hints{margin:6px 0 10px}
+.ng-hint-list p{margin:6px 0 0;padding:7px 10px;border:1px dashed #d3ff8c;background:#121a05;color:#e8ffc0;font:12.5px/1.5 Consolas,monospace;animation:ngPop .35s ease both}
+.ng-hint-list b{display:inline-block;margin-right:6px;padding:0 5px;background:#d3ff8c;color:#071e10}
+.ng-output{max-height:260px;overflow:auto;white-space:pre-wrap}
+.terminal-gate-shade .terminal-editor{min-height:130px!important;height:160px!important}
+
 /*TERMINAL // TANAKA NETTRACE*/
 
 .terminal-top {
@@ -5106,6 +5138,11 @@ return null;`, tests: [{ input: { items: [{ price: 1000, qty: 2 }, { price: 500,
 // Se não houver caminho, retorne -1.
 return null;`, tests: [{ input: { graph: { A: ['B', 'C'], B: ['D'], C: [], D: [] }, start: 'A', end: 'D' }, out: 2 }, { input: { graph: { S: ['A', 'B'], A: ['C'], B: ['D'], C: ['X'], D: ['X'], X: [] }, start: 'S', end: 'X' }, out: 3 }, { input: { graph: { A: ['B'], B: [], Z: [] }, start: 'A', end: 'Z' }, out: -1 }, { input: { graph: { A: ['B'], B: ['A'] }, start: 'A', end: 'A' }, out: 0 }] }
 };
+/* dicas progressivas de cada desafio */
+TERMINAL_CHALLENGES.easy.hints = ['Comece com um total igual a 0: <code>let total = 0;</code>', 'Passe por cada preço com <code>for (const preco of input)</code> e vá somando: <code>total += preco;</code>', 'No fim, devolva: <code>return total;</code>. Atalho: <code>return input.reduce((a, b) => a + b, 0);</code>'];
+TERMINAL_CHALLENGES.medium.hints = ['Primeiro filtre: <code>input.filter(item => item.stock > 0 && item.price <= 10000)</code>', 'Depois pegue só os nomes com <code>.map(item => item.name)</code>', 'Para ordenar em ordem alfabética, termine com <code>.sort()</code> e use <code>return</code> na frente de tudo.'];
+TERMINAL_CHALLENGES.hard.hints = ['Some price × qty de cada item: <code>input.items.reduce((t, i) => t + i.price * i.qty, 0)</code>', 'Se <code>input.coupon === \'B-SIDE\'</code>, multiplique o total por <code>0.85</code> (15% de desconto).', 'Arredonde para baixo com <code>Math.floor(total)</code> e devolva com <code>return</code>.'];
+TERMINAL_CHALLENGES.nightmare.hints = ['Se <code>start === end</code>, a resposta é 0. Use uma fila começando em <code>[[input.start, 0]]</code> (estação, viagens).', 'Tire o primeiro da fila; para cada vizinho em <code>input.graph[estacao] || []</code> ainda não visitado, coloque na fila com viagens + 1.', 'Quando um vizinho for igual a <code>input.end</code>, devolva as viagens + 1. Se a fila acabar, <code>return -1;</code>. Guarde as visitadas num <code>Set</code>.'];
 const TERMINAL_ORDERS = { 'night-cache': { name: 'PEDIDO ESPECIAL // NIGHT CACHE', desc: 'Canal de encomendas noturnas do Tanaka.' }, 'bside-armory': { name: 'PEDIDO ESPECIAL // B-SIDE ARMORY', desc: 'Lista paralela de armas e equipamentos fora da vitrine.' }, 'black-file': { name: 'PEDIDO ESPECIAL // PRESIDENT BLACK FILE', desc: 'Arquivo reservado do Presidente Tanaka Senior.' } };
 function terminalProfile() { if (!state.terminal || typeof state.terminal !== 'object')
     state.terminal = {}; return state.terminal[state.currentProfile] || (state.terminal[state.currentProfile] = { solved: [], unlocks: [] }); }
@@ -5128,7 +5165,12 @@ function makeTerminalRewardSale(challenge, key) { const p = current(), bagCount 
 // NETTRACE // autorização de acesso (desafio separado dos prêmios)
 const NETTRACE_ACCESS_CHALLENGE = {
     intercepted: [71, 104, 121, 108, 111],
-    starter: `// Os caracteres ASCII foram deslocados +3 pelo Presidente.\n// Inverta esse deslocamento em TODOS os números de input.\n// Monte uma string usando String.fromCharCode() e retorne-a.\nreturn "";`,
+    starter: `// input = lista de números. Ex.: [70, 68, 87]\n// 1) tire 3 de cada número\n// 2) transforme em letra: String.fromCharCode(numero)\n// 3) junte as letras e devolva com return\nreturn "";`,
+    hints: [
+        'Para passar por cada número, use <code>input.map(n => ...)</code>. Ele cria uma lista nova com o resultado de cada item.',
+        'Dentro do map, a letra de um número é <code>String.fromCharCode(n - 3)</code>. Isso transforma [70, 68, 87] em ["C", "A", "T"].',
+        'Para juntar a lista numa palavra, use <code>.join(\'\')</code>. Falta só completar: <code>return input.map(n => String.fromCharCode(___)).join(\'\');</code>'
+    ],
     tests: [
         { input: [71, 104, 121, 108, 111], out: 'Devil' },
         { input: [70, 68, 87], out: 'CAT' },
@@ -5142,14 +5184,20 @@ function openTerminalGate() {
         return openTerminal();
     const pid = state.currentProfile, challenge = NETTRACE_ACCESS_CHALLENGE;
     const html = `<div class="terminal-head"><div><h2>&gt;_ NETTRACE // LOCKED</h2><small>FIREWALL: TANAKA SENIOR · SOLICITAÇÃO DE ACESSO</small></div><span class="terminal-live">● PASSWORD REQUIRED</span></div>
-  <div class="terminal-body"><div class="netgate-mark">🔒 TERMINAL BLOQUEADO · QUEBRE A CIFRA PARA RECUPERAR A SENHA DO PRESIDENTE.</div>
-  <div class="netgate-grid"><section class="terminal-pane"><h3>01 // INTERCEPTAR A SENHA</h3>
-  <div class="netgate-command">Os arquivos do Presidente usam códigos ASCII. Cada caractere da senha foi deslocado <em>+3</em> posições.\n\nInverta o deslocamento para recuperar os caracteres e junte-os numa única palavra.\n\n<em>Exemplo:</em> input = [70, 68, 87] → "CAT"\n\nEscreva apenas o CORPO de resolver(input). Não declare a função inteira. Seu código precisa funcionar com outras mensagens, não apenas com a senha interceptada.</div>
-  <div class="netgate-ascii" aria-label="Códigos interceptados">${challenge.intercepted.map(v => `<span>${v}</span>`).join('')}</div>
+  <div class="terminal-body"><div class="netgate-mark">🔒 TERMINAL BLOQUEADO · DESCUBRA A SENHA DO PRESIDENTE PARA ENTRAR.</div>
+  <div class="netgate-grid"><section class="terminal-pane"><h3>01 // A MISSÃO</h3>
+  <p class="ng-lead">A senha está escondida nestes <b>${challenge.intercepted.length} números</b>. Cada número é uma <b>letra</b> (código ASCII), mas o Presidente <b>somou +3</b> em todas. Seu programa precisa <b>tirar 3</b> de cada número, transformar em letra e juntar tudo.</p>
+  <div class="ng-cipher" aria-label="Senha interceptada">${challenge.intercepted.map(v => `<span><b>${v}</b><i data-gate-letter>?</i></span>`).join('')}</div>
+  <h4 class="ng-sub">COMO FUNCIONA · exemplo com "CAT"</h4>
+  <div class="ng-demo"><div class="ng-demo-row ng-demo-head"><span>RECEBIDO</span><span>− 3</span><span>LETRA</span></div>${[[70,'C'],[68,'A'],[87,'T']].map(([n,l]) => `<div class="ng-demo-row"><span>${n}</span><span>${n-3}</span><span>"${l}"</span></div>`).join('')}<div class="ng-demo-foot">junta tudo → <b>"CAT"</b></div></div>
+  <h4 class="ng-sub">PASSO A PASSO</h4>
+  <ol class="ng-steps"><li>Passe por <b>cada número</b> de <code>input</code>.</li><li>Faça <code>número - 3</code> e transforme em letra com <code>String.fromCharCode(...)</code>.</li><li>Junte as letras numa palavra e devolva com <code>return</code>.</li></ol>
+  <details class="ng-glossary"><summary>O que significa input / return?</summary><p><code>input</code> é a lista de números que o firewall entrega para o seu código (ex.: <code>[70, 68, 87]</code>).<br><code>return</code> é a resposta que o seu código devolve (ex.: <code>"CAT"</code>).<br>Você escreve só o <b>miolo</b> da função: nada de <code>function</code>, só os comandos e o <code>return</code>.</p></details>
+  <div class="ng-hints"><button type="button" class="terminal-action" data-gate-hint>💡 PEDIR DICA (0/3)</button><div class="ng-hint-list" data-gate-hints></div></div>
   <textarea class="terminal-editor" data-gate-code spellcheck="false" aria-label="Código para decifrar a senha">${terminalEscape(challenge.starter)}</textarea>
-  <div class="terminal-actions"><button type="button" class="terminal-action" data-gate-starter>RESTAURAR MODELO</button><button type="button" class="terminal-action primary" data-gate-test>▶ DECIFRAR / EXECUTAR TESTES</button></div>
+  <div class="terminal-actions"><button type="button" class="terminal-action" data-gate-starter>RESTAURAR MODELO</button><button type="button" class="terminal-action primary" data-gate-test>▶ DECIFRAR / TESTAR</button></div>
   </section><section class="terminal-pane"><h3>02 // CONSOLE DE AUTENTICAÇÃO</h3>
-  <div class="terminal-output" data-gate-output aria-live="polite">&gt; FIREWALL ATIVO...\n&gt; 4 testes aguardando decodificação.\n&gt; A senha não aparece até o programa passar.</div>
+  <div class="terminal-output ng-output" data-gate-output aria-live="polite">&gt; FIREWALL ATIVO...\n&gt; Seu código vai ser testado com 4 mensagens diferentes.\n&gt; A senha só aparece quando as 4 passarem.</div>
   <div class="netgate-password"><label for="nettracePresidentPassword">SENHA DO PRESIDENTE TANAKA SR.</label>
   <input id="nettracePresidentPassword" data-gate-password type="text" maxlength="20" disabled placeholder="ACESSO BLOQUEADO" autocomplete="off" autocapitalize="off" spellcheck="false">
   <div class="netgate-recovered" data-gate-recovered>🔐 Execute o programa para descobrir a senha.</div>
@@ -5158,7 +5206,15 @@ function openTerminalGate() {
     const m = openModal(html, true, 'terminal-shade terminal-gate-shade');
     const code = m.querySelector('[data-gate-code]'), run = m.querySelector('[data-gate-test]'), out = m.querySelector('[data-gate-output]');
     const pass = m.querySelector('[data-gate-password]'), enter = m.querySelector('[data-gate-enter]'), recovered = m.querySelector('[data-gate-recovered]');
-    let discovered = '';
+    let discovered = '', hintN = 0;
+    const hintBtn = m.querySelector('[data-gate-hint]'), hintList = m.querySelector('[data-gate-hints]');
+    hintBtn.onclick = () => {
+        if (hintN >= challenge.hints.length) return;
+        hintList.insertAdjacentHTML('beforeend', `<p><b>DICA ${hintN + 1}</b> ${challenge.hints[hintN]}</p>`);
+        hintN++; hintBtn.textContent = hintN >= challenge.hints.length ? '💡 SEM MAIS DICAS' : `💡 PEDIR DICA (${hintN}/${challenge.hints.length})`;
+        hintBtn.disabled = hintN >= challenge.hints.length;
+    };
+    const letters = [...m.querySelectorAll('[data-gate-letter]')];
     m.querySelector('[data-gate-starter]').onclick = () => { code.value = challenge.starter; code.focus(); };
     code.addEventListener('keydown', e => { if (e.key === 'Tab') {
         e.preventDefault();
@@ -5191,13 +5247,19 @@ function openTerminalGate() {
             return;
         }
         const passes = response.results.filter(t => t.pass).length;
-        out.innerHTML = response.results.map(r => `VERIFICAÇÃO ${r.index + 1} / ${challenge.tests.length}: ${r.pass ? '<span class="ok">PASS</span>' : '<span class="err">FAIL</span>'}`).join('\n');
+        out.innerHTML = response.results.map(r => {
+            const t = challenge.tests[r.index], isSecret = r.index === 0;
+            const head = `MENSAGEM ${r.index + 1} / ${challenge.tests.length}: ${r.pass ? '<span class="ok">PASS ✓</span>' : '<span class="err">FAIL ✗</span>'}`;
+            if (r.pass) return head;
+            return head + `\n  entrada:  ${terminalEscape(JSON.stringify(t.input))}` + (isSecret ? '' : `\n  esperado: ${terminalEscape(JSON.stringify(t.out))}`) + `\n  seu código devolveu: ${terminalEscape(JSON.stringify(r.got))}`;
+        }).join('\n\n');
         if (passes !== challenge.tests.length) {
             out.innerHTML += `\n\n<span class="err">${challenge.tests.length - passes} verificação(ões) falharam. Ajuste sua solução. A senha permanece oculta.</span>`;
             run.disabled = false;
             return;
         }
         discovered = response.results[0].got;
+        letters.forEach((l, i) => { l.textContent = discovered[i] || '?'; l.classList.add('on'); l.style.animationDelay = (i * 0.12) + 's'; });
         out.innerHTML += `\n\n<span class="ok">CIFRA QUEBRADA. SENHA RECONSTRUÍDA: ${terminalEscape(discovered)}\n&gt; Insira a senha no campo para autenticar.</span>`;
         recovered.textContent = '✓ SENHA DESCOBERTA: ' + discovered + ' · Digite-a exatamente como apareceu.';
         pass.disabled = false;
@@ -5230,7 +5292,7 @@ function openTerminalGate() {
         authenticate(); });
 }
 function openTerminal() { if (!terminalProfile().access)
-    return openTerminalGate(); const profile = current(), progress = terminalProfile(); let selected = Object.keys(TERMINAL_CHALLENGES).find(k => !progress.solved.includes(k)) || 'easy'; const html = `<div class="terminal-head"><div><h2>&gt;_ TANAKA // NETTRACE</h2><small>LOCALHOST:2000 · CLIENTE ${terminalEscape(profile.name.toUpperCase())} · ACESSO NÃO AUTORIZADO</small></div><span class="terminal-live">● CONNECTION LIVE</span></div><div class="terminal-body"><div class="terminal-banner">Resolva desafios em JavaScript para receber <b>¥, aberturas de Maleta Lacrada e pedidos especiais</b>. Cada desafio paga uma única vez por personagem.</div><div class="terminal-diff-grid" data-terminal-diffs></div><div class="terminal-workspace"><section class="terminal-pane"><h3 data-terminal-title></h3><div class="terminal-problem" data-terminal-problem></div><div class="terminal-example" data-terminal-example></div><textarea class="terminal-editor" spellcheck="false" data-terminal-code></textarea><div class="terminal-actions"><button class="terminal-action" data-terminal-starter>RESTAURAR MODELO</button><button class="terminal-action primary" data-terminal-run>▶ EXECUTAR TESTES</button></div></section><section class="terminal-pane"><h3>CONSOLE // TEST RUNNER</h3><div class="terminal-output" data-terminal-output>&gt; aguardando comando...\n&gt; worker isolado pronto.</div><div class="terminal-orders"><h3>PEDIDOS ESPECIAIS // ACCESS FLAGS</h3><div data-terminal-orders></div></div><div class="terminal-progress" data-terminal-progress></div></section></div><div class="dialog-actions" style="margin-top:12px"><button class="action light" data-close>DESCONECTAR</button></div></div>`; const m = openModal(html, true, 'terminal-shade'), diffs = m.querySelector('[data-terminal-diffs]'), title = m.querySelector('[data-terminal-title]'), problem = m.querySelector('[data-terminal-problem]'), example = m.querySelector('[data-terminal-example]'), editor = m.querySelector('[data-terminal-code]'), out = m.querySelector('[data-terminal-output]'), orders = m.querySelector('[data-terminal-orders]'), prog = m.querySelector('[data-terminal-progress]'), run = m.querySelector('[data-terminal-run]'), starter = m.querySelector('[data-terminal-starter]'); const renderOrders = () => { const tp = terminalProfile(); orders.innerHTML = Object.entries(TERMINAL_ORDERS).map(([id, o]) => `<div class="terminal-order ${tp.unlocks.includes(id) ? '' : 'locked'}"><div><b>${terminalEscape(o.name)}</b><br>${terminalEscape(tp.unlocks.includes(id) ? o.desc : 'ACESSO NEGADO // conclua o desafio correspondente.')}</div><span>${tp.unlocks.includes(id) ? 'UNLOCKED' : 'LOCKED'}</span></div>`).join(''); }; const renderDiffs = () => { const tp = terminalProfile(); diffs.innerHTML = Object.entries(TERMINAL_CHALLENGES).map(([k, c]) => `<button type="button" class="terminal-diff ${selected === k ? 'active' : ''} ${tp.solved.includes(k) ? 'done' : ''}" data-terminal-diff="${k}"><b>${c.label}</b><small>${terminalEscape(c.title)}</small><span class="reward">+${money(c.yen)} · ${c.bags} MALETA${c.bags > 1 ? 'S' : ''}${c.unlock ? ' · PEDIDO' : ''}</span></button>`).join(''); prog.textContent = `PROGRESSO: ${tp.solved.length}/4 DESAFIOS · ${tp.unlocks.length}/3 PEDIDOS LIBERADOS`; renderOrders(); }; const selectChallenge = k => { selected = k; const c = TERMINAL_CHALLENGES[k]; title.textContent = `${c.label} // ${c.title}`; problem.textContent = c.problem; example.textContent = c.example; editor.value = c.starter; out.innerHTML = terminalSolved(k) ? '<span class="ok">&gt; DESAFIO JÁ CONCLUÍDO. Recompensa registrada.</span>' : '&gt; aguardando código...'; run.disabled = terminalSolved(k); run.textContent = terminalSolved(k) ? '✓ CONCLUÍDO' : '▶ EXECUTAR TESTES'; renderDiffs(); }; diffs.addEventListener('click', e => { const b = e.target.closest('[data-terminal-diff]'); if (b)
+    return openTerminalGate(); const profile = current(), progress = terminalProfile(); let selected = Object.keys(TERMINAL_CHALLENGES).find(k => !progress.solved.includes(k)) || 'easy'; const html = `<div class="terminal-head"><div><h2>&gt;_ TANAKA // NETTRACE</h2><small>LOCALHOST:2000 · CLIENTE ${terminalEscape(profile.name.toUpperCase())} · ACESSO NÃO AUTORIZADO</small></div><span class="terminal-live">● CONNECTION LIVE</span></div><div class="terminal-body"><div class="terminal-banner">Resolva desafios em JavaScript para receber <b>¥, aberturas de Maleta Lacrada e pedidos especiais</b>. Cada desafio paga uma única vez por personagem.</div><div class="terminal-diff-grid" data-terminal-diffs></div><div class="terminal-workspace"><section class="terminal-pane"><h3 data-terminal-title></h3><div class="terminal-problem" data-terminal-problem></div><div class="terminal-example" data-terminal-example></div><div class="ng-hints"><button type="button" class="terminal-action" data-terminal-hint>💡 PEDIR DICA</button><div class="ng-hint-list" data-terminal-hints></div></div><textarea class="terminal-editor" spellcheck="false" data-terminal-code></textarea><div class="terminal-actions"><button class="terminal-action" data-terminal-starter>RESTAURAR MODELO</button><button class="terminal-action primary" data-terminal-run>▶ EXECUTAR TESTES</button></div></section><section class="terminal-pane"><h3>CONSOLE // TEST RUNNER</h3><div class="terminal-output" data-terminal-output>&gt; aguardando comando...\n&gt; worker isolado pronto.</div><div class="terminal-orders"><h3>PEDIDOS ESPECIAIS // ACCESS FLAGS</h3><div data-terminal-orders></div></div><div class="terminal-progress" data-terminal-progress></div></section></div><div class="dialog-actions" style="margin-top:12px"><button class="action light" data-close>DESCONECTAR</button></div></div>`; const m = openModal(html, true, 'terminal-shade'), diffs = m.querySelector('[data-terminal-diffs]'), title = m.querySelector('[data-terminal-title]'), problem = m.querySelector('[data-terminal-problem]'), example = m.querySelector('[data-terminal-example]'), editor = m.querySelector('[data-terminal-code]'), out = m.querySelector('[data-terminal-output]'), orders = m.querySelector('[data-terminal-orders]'), prog = m.querySelector('[data-terminal-progress]'), run = m.querySelector('[data-terminal-run]'), starter = m.querySelector('[data-terminal-starter]'); const renderOrders = () => { const tp = terminalProfile(); orders.innerHTML = Object.entries(TERMINAL_ORDERS).map(([id, o]) => `<div class="terminal-order ${tp.unlocks.includes(id) ? '' : 'locked'}"><div><b>${terminalEscape(o.name)}</b><br>${terminalEscape(tp.unlocks.includes(id) ? o.desc : 'ACESSO NEGADO // conclua o desafio correspondente.')}</div><span>${tp.unlocks.includes(id) ? 'UNLOCKED' : 'LOCKED'}</span></div>`).join(''); }; const renderDiffs = () => { const tp = terminalProfile(); diffs.innerHTML = Object.entries(TERMINAL_CHALLENGES).map(([k, c]) => `<button type="button" class="terminal-diff ${selected === k ? 'active' : ''} ${tp.solved.includes(k) ? 'done' : ''}" data-terminal-diff="${k}"><b>${c.label}</b><small>${terminalEscape(c.title)}</small><span class="reward">+${money(c.yen)} · ${c.bags} MALETA${c.bags > 1 ? 'S' : ''}${c.unlock ? ' · PEDIDO' : ''}</span></button>`).join(''); prog.textContent = `PROGRESSO: ${tp.solved.length}/4 DESAFIOS · ${tp.unlocks.length}/3 PEDIDOS LIBERADOS`; renderOrders(); }; let hintN = 0; const hintBtn = m.querySelector('[data-terminal-hint]'), hintList = m.querySelector('[data-terminal-hints]'); const paintHint = () => { const c = TERMINAL_CHALLENGES[selected], H = c.hints || []; hintBtn.disabled = hintN >= H.length; hintBtn.textContent = hintN >= H.length ? '💡 SEM MAIS DICAS' : `💡 PEDIR DICA (${hintN}/${H.length})`; }; hintBtn.onclick = () => { const H = TERMINAL_CHALLENGES[selected].hints || []; if (hintN >= H.length) return; hintList.insertAdjacentHTML('beforeend', `<p><b>DICA ${hintN + 1}</b> ${H[hintN]}</p>`); hintN++; paintHint(); }; const selectChallenge = k => { selected = k; hintN = 0; hintList.innerHTML = ''; paintHint(); const c = TERMINAL_CHALLENGES[k]; title.textContent = `${c.label} // ${c.title}`; problem.textContent = c.problem; example.textContent = c.example; editor.value = c.starter; out.innerHTML = terminalSolved(k) ? '<span class="ok">&gt; DESAFIO JÁ CONCLUÍDO. Recompensa registrada.</span>' : '&gt; aguardando código...'; run.disabled = terminalSolved(k); run.textContent = terminalSolved(k) ? '✓ CONCLUÍDO' : '▶ EXECUTAR TESTES'; renderDiffs(); }; diffs.addEventListener('click', e => { const b = e.target.closest('[data-terminal-diff]'); if (b)
     selectChallenge(b.dataset.terminalDiff); }); starter.onclick = () => { editor.value = TERMINAL_CHALLENGES[selected].starter; editor.focus(); }; editor.addEventListener('keydown', e => { if (e.key === 'Tab') {
     e.preventDefault();
     const s = editor.selectionStart, end = editor.selectionEnd;
